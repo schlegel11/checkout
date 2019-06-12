@@ -10,7 +10,7 @@ namespace SupermarketCheckout.Utils
         public DateTimeRange(DateTime start, DateTime end)
         {
             Checks.CheckArgument(start <= end, "Start date should be <= end date.");
-            
+
             Start = start;
             End = end;
         }
