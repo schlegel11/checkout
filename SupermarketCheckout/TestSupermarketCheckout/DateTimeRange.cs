@@ -1,7 +1,7 @@
 using System;
 using NUnit.Framework;
 
-namespace Tests
+namespace TestSupermarketCheckout
 {
     public class DateTimeRange
     {
@@ -23,8 +23,7 @@ namespace Tests
             var endDate = DateTime.Now.AddDays(1);
 
             Assert.Throws(typeof(ArgumentException),
-                () => new SupermarketCheckout.Utils.DateTimeRange(endDate, startDate),
-                "Start date should be <= end date.");
+                () => new SupermarketCheckout.Utils.DateTimeRange(endDate, startDate));
         }
 
         [Test]
