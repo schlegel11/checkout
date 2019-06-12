@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using SupermarketCheckout.Entities;
 
-namespace SupermarketCheckout
+namespace SupermarketCheckout.Entities
 {
     public class CheckoutBill
     {
