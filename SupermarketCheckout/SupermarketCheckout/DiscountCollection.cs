@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using SupermarketCheckout.Utils;
 
 namespace SupermarketCheckout
 {
@@ -10,7 +11,10 @@ namespace SupermarketCheckout
 
         public void Add(Item item, Discount discount)
         {
-            discountItems.Add(item, discount);
+            Checks.CheckArgumentNotNull(item, "Item can't be null.");
+            Checks.CheckArgumentNotNull(discount, "Discount can't be null.");
+
+            discountItems[item] = discount;
         }
 
         public Discount GetOrDefault(Item item, Discount defaultDiscount)
