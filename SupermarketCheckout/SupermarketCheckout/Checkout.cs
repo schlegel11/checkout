@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using SupermarketCheckout.Entities;
 using SupermarketCheckout.Utils;
 
 namespace SupermarketCheckout
@@ -26,33 +27,23 @@ namespace SupermarketCheckout
             }
         }
 
-        public void PayItems()
+        public CheckoutBill PayItems()
         {
-            Console.WriteLine("--- Items ---");
-            decimal total = 0;
+            var checkoutBill = new CheckoutBill();
             foreach (var (item, amount) in items)
             {
                 var discount = GetDiscount(item);
                 var (price, appliedDiscounts) = CalculatePrice(amount, item, discount);
-                total += price;
 
-                var stringBuilder = new StringBuilder();
-                stringBuilder.Append($"Name: {item.Name}");
-                stringBuilder.Append(" | ");
-                stringBuilder.Append($"Amount: {amount}");
-                stringBuilder.Append(" | ");
-                stringBuilder.Append($"Unit price: {item.Price}");
-                stringBuilder.Append(" | ");
-                stringBuilder.Append($"Price: {price}");
-                stringBuilder.Append(" | ");
-                stringBuilder.Append(
-                    $"Applied discount: {(appliedDiscounts == 0 ? "No discounts" : appliedDiscounts + " X " + $"\"{discount.Name}\"")}");
-
-                Console.WriteLine(stringBuilder);
+                var checkoutItem = new CheckoutItem
+                {
+                    Amount = amount, Discount = discount, Item = item, Price = price,
+                    AppliedDiscounts = appliedDiscounts
+                };
+                checkoutBill.Items.Add(checkoutItem);
             }
 
-            Console.WriteLine("--- * ---");
-            Console.WriteLine($"Total: {total}");
+            return checkoutBill;
         }
 
         private Discount GetDiscount(Item item)

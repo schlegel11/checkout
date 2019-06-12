@@ -28,7 +28,8 @@ namespace SupermarketCheckout
                 checkout.AddItem(4, apple);
                 checkout.AddItem(1, banana);
 
-                checkout.PayItems();
+                var checkoutBill = checkout.PayItems();
+                Console.WriteLine(checkoutBill);
             }
             catch (Exception e)
             {
