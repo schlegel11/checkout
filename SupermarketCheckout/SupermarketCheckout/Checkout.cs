@@ -30,14 +30,11 @@ namespace SupermarketCheckout
         {
             Console.WriteLine("--- Items ---");
             decimal total = 0;
-            foreach (var keyValuePair in items)
+            foreach (var (item, amount) in items)
             {
-                var item = keyValuePair.Key;
-                var amount = keyValuePair.Value;
-
                 var discount = GetDiscount(item);
-                var priceAndDiscounts = CalculatePrice(amount, item, discount);
-                total += priceAndDiscounts.price;
+                var (price, appliedDiscounts) = CalculatePrice(amount, item, discount);
+                total += price;
 
                 var stringBuilder = new StringBuilder();
                 stringBuilder.Append($"Name: {item.Name}");
@@ -46,10 +43,10 @@ namespace SupermarketCheckout
                 stringBuilder.Append(" | ");
                 stringBuilder.Append($"Unit price: {item.Price}");
                 stringBuilder.Append(" | ");
-                stringBuilder.Append($"Price: {priceAndDiscounts.price}");
+                stringBuilder.Append($"Price: {price}");
                 stringBuilder.Append(" | ");
                 stringBuilder.Append(
-                    $"Applied discount: {(priceAndDiscounts.appliedDiscounts == 0 ? "No discounts" : priceAndDiscounts.appliedDiscounts + " X " + $"\"{discount.Name}\"")}");
+                    $"Applied discount: {(appliedDiscounts == 0 ? "No discounts" : appliedDiscounts + " X " + $"\"{discount.Name}\"")}");
 
                 Console.WriteLine(stringBuilder);
             }
@@ -64,11 +61,9 @@ namespace SupermarketCheckout
             {
                 return DiscountCollection.GetOrDefault(item, NoDiscount);
             }
-            else
-            {
-                //Log discount is not valid.
-                Console.WriteLine($"DiscountCollection is invalid with date range {DiscountCollection.ValidityRange}.");
-            }
+
+            //Log discount is not valid.
+            Console.WriteLine($"DiscountCollection is invalid with date range {DiscountCollection.ValidityRange}.");
 
             return NoDiscount;
         }
