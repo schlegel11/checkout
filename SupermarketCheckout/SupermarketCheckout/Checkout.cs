@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
+using SupermarketCheckout.Utils;
 
 namespace SupermarketCheckout
 {
@@ -11,6 +13,9 @@ namespace SupermarketCheckout
 
         public void AddItem(int amount, Item item)
         {
+            Checks.CheckArgumentNotNull(item, "Item can't be null.");
+            Checks.CheckArgument(amount > 0, "Amount must be > 0.");
+
             if (items.TryGetValue(item, out var currentAmount))
             {
                 items[item] = currentAmount + amount;
@@ -23,7 +28,7 @@ namespace SupermarketCheckout
 
         public void CheckoutItems()
         {
-            Console.Out.WriteLine("--- Items ---");
+            Console.WriteLine("--- Items ---");
             decimal total = 0;
             foreach (var keyValuePair in items)
             {
@@ -31,15 +36,26 @@ namespace SupermarketCheckout
                 var amount = keyValuePair.Value;
 
                 var discount = GetDiscount(item);
-                var priceInfo = CalculatePrice(amount, item, discount);
-                total += priceInfo.price;
+                var priceAndDiscounts = CalculatePrice(amount, item, discount);
+                total += priceAndDiscounts.price;
 
-                Console.Out.WriteLine(
-                    $"Name: {item.Name} | Amount: {amount} | Unit price: {item.Price} | Price: {priceInfo.price} | Applied discount: {(discount == NoDiscount ? "No discounts" : priceInfo.appliedDiscounts + " X " + discount.Name)}");
+                var stringBuilder = new StringBuilder();
+                stringBuilder.Append($"Name: {item.Name}");
+                stringBuilder.Append(" | ");
+                stringBuilder.Append($"Amount: {amount}");
+                stringBuilder.Append(" | ");
+                stringBuilder.Append($"Unit price: {item.Price}");
+                stringBuilder.Append(" | ");
+                stringBuilder.Append($"Price: {priceAndDiscounts.price}");
+                stringBuilder.Append(" | ");
+                stringBuilder.Append(
+                    $"Applied discount: {(priceAndDiscounts.appliedDiscounts == 0 ? "No discounts" : priceAndDiscounts.appliedDiscounts + " X " + $"\"{discount.Name}\"")}");
+
+                Console.WriteLine(stringBuilder);
             }
 
-            Console.Out.WriteLine("--- * ---");
-            Console.Out.WriteLine($"Total: {total}");
+            Console.WriteLine("--- * ---");
+            Console.WriteLine($"Total: {total}");
         }
 
         private Discount GetDiscount(Item item)
@@ -51,6 +67,7 @@ namespace SupermarketCheckout
             else
             {
                 //Log discount is not valid.
+                Console.WriteLine($"DiscountCollection is invalid with date range {DiscountCollection.ValidityRange}.");
             }
 
             return NoDiscount;
