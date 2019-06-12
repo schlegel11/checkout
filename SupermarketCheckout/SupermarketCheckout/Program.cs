@@ -28,7 +28,7 @@ namespace SupermarketCheckout
                 checkout.AddItem(4, apple);
                 checkout.AddItem(1, banana);
 
-                checkout.CheckoutItems();
+                checkout.PayItems();
             }
             catch (Exception e)
             {

@@ -26,7 +26,7 @@ namespace SupermarketCheckout
             }
         }
 
-        public void CheckoutItems()
+        public void PayItems()
         {
             Console.WriteLine("--- Items ---");
             decimal total = 0;
