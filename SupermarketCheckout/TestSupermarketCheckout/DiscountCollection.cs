@@ -41,7 +41,7 @@ namespace TestSupermarketCheckout
             var discount = new Discount();
             discountCollection.Add(item, discount);
             Assert.AreEqual(discountCollection.GetOrDefault(item, null), discount);
-            Assert.Null(discountCollection.GetOrDefault(new Item{Name = "OtherName"}, null));
+            Assert.Null(discountCollection.GetOrDefault(new Item {Name = "OtherName"}, null));
         }
 
         [Test]
