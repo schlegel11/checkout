@@ -1,6 +1,6 @@
 using System;
 
-namespace SupermarketCheckout
+namespace SupermarketCheckout.Utils
 {
     public class DateTimeRange
     {
@@ -9,7 +9,9 @@ namespace SupermarketCheckout
 
         public DateTimeRange(DateTime start, DateTime end)
         {
-            // Add param check
+            Checks.CheckArgumentNotNull(start, "Start date can't be null.");
+            Checks.CheckArgumentNotNull(end, "End date can't be null.");
+
             Start = start;
             End = end;
         }
@@ -17,6 +19,11 @@ namespace SupermarketCheckout
         public bool IsInRange(DateTime dateTime)
         {
             return dateTime >= Start && dateTime <= End;
+        }
+
+        public override string ToString()
+        {
+            return $"{nameof(Start)}: {Start}, {nameof(End)}: {End}";
         }
     }
 }
