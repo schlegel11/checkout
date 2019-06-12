@@ -9,9 +9,8 @@ namespace SupermarketCheckout.Utils
 
         public DateTimeRange(DateTime start, DateTime end)
         {
-            Checks.CheckArgumentNotNull(start, "Start date can't be null.");
-            Checks.CheckArgumentNotNull(end, "End date can't be null.");
-
+            Checks.CheckArgument(start <= end, "Start date should be <= end date.");
+            
             Start = start;
             End = end;
         }
