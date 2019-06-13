@@ -22,7 +22,7 @@ namespace TestSupermarketCheckout
             var item = new Item();
             var discount = new Discount();
             discountCollection.Add(item, discount);
-            Assert.AreEqual(discountCollection.GetOrDefault(item, null), discount);
+            Assert.AreEqual(discount, discountCollection.GetOrDefault(item, null));
         }
 
         [Test]
@@ -40,8 +40,8 @@ namespace TestSupermarketCheckout
             var item = new Item();
             var discount = new Discount();
             discountCollection.Add(item, discount);
-            Assert.AreEqual(discountCollection.GetOrDefault(item, null), discount);
-            Assert.Null(discountCollection.GetOrDefault(new Item{Name = "OtherName"}, null));
+            Assert.AreEqual(discount, discountCollection.GetOrDefault(item, null));
+            Assert.Null(discountCollection.GetOrDefault(new Item {Name = "OtherName"}, null));
         }
 
         [Test]

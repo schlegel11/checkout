@@ -12,8 +12,8 @@ namespace TestSupermarketCheckout
             var endDate = DateTime.Now.AddDays(1);
             var dateTimeRange = new SupermarketCheckout.Utils.DateTimeRange(startDate, endDate);
 
-            Assert.AreEqual(dateTimeRange.Start, startDate);
-            Assert.AreEqual(dateTimeRange.End, endDate);
+            Assert.AreEqual(startDate, dateTimeRange.Start);
+            Assert.AreEqual(endDate, dateTimeRange.End);
         }
 
         [Test]
