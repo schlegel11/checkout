@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SupermarketCheckout", "SupermarketCheckout\SupermarketCheckout.csproj", "{D3826335-FB28-4A53-966A-965ECF70DF75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSupermarketCheckout", "TestSupermarketCheckout\TestSupermarketCheckout.csproj", "{DFEF584D-BEB0-491E-B3C3-DB8EDDDBE9CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D3826335-FB28-4A53-966A-965ECF70DF75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3826335-FB28-4A53-966A-965ECF70DF75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3826335-FB28-4A53-966A-965ECF70DF75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3826335-FB28-4A53-966A-965ECF70DF75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFEF584D-BEB0-491E-B3C3-DB8EDDDBE9CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFEF584D-BEB0-491E-B3C3-DB8EDDDBE9CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFEF584D-BEB0-491E-B3C3-DB8EDDDBE9CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFEF584D-BEB0-491E-B3C3-DB8EDDDBE9CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
