@@ -1,7 +1,6 @@
 using System;
 using System.Linq;
 using NUnit.Framework;
-using SupermarketCheckout;
 using SupermarketCheckout.Entities;
 
 namespace TestSupermarketCheckout

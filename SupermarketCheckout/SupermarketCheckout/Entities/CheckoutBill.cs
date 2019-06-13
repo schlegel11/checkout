@@ -17,10 +17,7 @@ namespace SupermarketCheckout.Entities
         {
             var stringBuilder = new StringBuilder();
             stringBuilder.AppendLine("--- Items ---");
-            foreach (var checkoutItem in Items)
-            {
-                stringBuilder.AppendLine(checkoutItem.ToString());
-            }
+            foreach (var checkoutItem in Items) stringBuilder.AppendLine(checkoutItem.ToString());
 
             stringBuilder.AppendLine("--- * ---");
             stringBuilder.AppendLine($"Total: {Total}");

@@ -1,9 +1,10 @@
 ﻿using System;
+using SupermarketCheckout.Entities;
 using SupermarketCheckout.Utils;
 
 namespace SupermarketCheckout
 {
-    class Program
+    internal class Program
     {
         private static void Main(string[] args)
         {

@@ -1,7 +1,6 @@
 using System;
-using System.Collections.Generic;
 
-namespace SupermarketCheckout
+namespace SupermarketCheckout.Entities
 {
     public class Item : IEquatable<Item>
     {
@@ -26,7 +25,7 @@ namespace SupermarketCheckout
 
         public override int GetHashCode()
         {
-            return (Name != null ? Name.GetHashCode() : 0);
+            return Name != null ? Name.GetHashCode() : 0;
         }
 
         public static bool operator ==(Item left, Item right)

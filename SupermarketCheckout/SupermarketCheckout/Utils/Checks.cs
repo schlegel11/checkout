@@ -21,10 +21,7 @@ namespace SupermarketCheckout.Utils
 
         public static void Check(bool term, Exception exception)
         {
-            if (!term)
-            {
-                throw exception;
-            }
+            if (!term) throw exception;
         }
     }
 }

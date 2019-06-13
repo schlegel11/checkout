@@ -31,7 +31,7 @@ namespace SupermarketCheckout.Entities
         {
             unchecked
             {
-                var hashCode = (Item != null ? Item.GetHashCode() : 0);
+                var hashCode = Item != null ? Item.GetHashCode() : 0;
                 hashCode = (hashCode * 397) ^ (Discount != null ? Discount.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ Amount;
                 hashCode = (hashCode * 397) ^ AppliedDiscounts;

@@ -4,8 +4,8 @@ namespace SupermarketCheckout.Utils
 {
     public class DateTimeRange
     {
-        public readonly DateTime Start;
         public readonly DateTime End;
+        public readonly DateTime Start;
 
         public DateTimeRange(DateTime start, DateTime end)
         {
