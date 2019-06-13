@@ -13,7 +13,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\SupermarketCheckout\SupermarketCheckout.csproj" />
+        <ProjectReference Include="..\SupermarketCheckout\SupermarketCheckout.csproj" />
     </ItemGroup>
 
 </Project>
