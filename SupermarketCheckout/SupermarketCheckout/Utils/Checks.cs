@@ -13,12 +13,7 @@ namespace SupermarketCheckout.Utils
         {
             Check(argument != null, new ArgumentNullException(message));
         }
-
-        public static void CheckNotNull(object value, string message = "")
-        {
-            Check(value != null, new NullReferenceException(message));
-        }
-
+        
         public static void Check(bool term, Exception exception)
         {
             if (!term) throw exception;
