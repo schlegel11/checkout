@@ -24,6 +24,7 @@ namespace TestSupermarketCheckout
 
             Assert.Throws(typeof(ArgumentException),
                 () => new SupermarketCheckout.Utils.DateTimeRange(endDate, startDate));
+
         }
 
         [Test]
