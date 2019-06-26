@@ -51,9 +51,9 @@ namespace SupermarketCheckout
                 var discount = GetDiscount(item);
                 var (price, appliedDiscounts) = CalculatePrice(amount, item, discount);
 
-                var checkoutItem = new CheckoutItem
+                var checkoutItem = new CheckoutItem(item, discount)
                 {
-                    Amount = amount, Discount = discount, Item = item, Price = price,
+                    Amount = amount, Price = price,
                     AppliedDiscounts = appliedDiscounts
                 };
                 checkoutBill.Items.Add(checkoutItem);

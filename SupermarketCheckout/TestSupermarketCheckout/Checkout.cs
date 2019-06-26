@@ -51,19 +51,19 @@ namespace TestSupermarketCheckout
             checkout.AddItem(4, peach);
             var checkoutBill = checkout.PayItems();
 
-            var paidApple = new CheckoutItem
+            var paidApple = new CheckoutItem(apple, SupermarketCheckout.Checkout.NoDiscount)
             {
-                Amount = 2, Discount = SupermarketCheckout.Checkout.NoDiscount, Item = apple, Price = 60,
+                Amount = 2, Price = 60,
                 AppliedDiscounts = 0
             };
-            var paidBanana = new CheckoutItem
+            var paidBanana = new CheckoutItem(banana, SupermarketCheckout.Checkout.NoDiscount)
             {
-                Amount = 7, Discount = SupermarketCheckout.Checkout.NoDiscount, Item = banana, Price = 350,
+                Amount = 7, Price = 350,
                 AppliedDiscounts = 0
             };
-            var paidPeach = new CheckoutItem
+            var paidPeach = new CheckoutItem(peach, SupermarketCheckout.Checkout.NoDiscount)
             {
-                Amount = 4, Discount = SupermarketCheckout.Checkout.NoDiscount, Item = peach, Price = 240,
+                Amount = 4, Price = 240,
                 AppliedDiscounts = 0
             };
 
@@ -93,20 +93,20 @@ namespace TestSupermarketCheckout
             discountCollection.Add(peach, discountPeach);
             var checkoutBill = checkout.PayItems();
 
-            var paidApple = new CheckoutItem
+            var paidApple = new CheckoutItem(apple, discountApple)
             {
-                Amount = 2, Discount = discountApple, Item = apple, Price = 45,
+                Amount = 2, Price = 45,
                 AppliedDiscounts = 1
             };
 
-            var paidBanana = new CheckoutItem
+            var paidBanana = new CheckoutItem(banana, discountBanana)
             {
-                Amount = 7, Discount = discountBanana, Item = banana, Price = 310,
+                Amount = 7, Price = 310,
                 AppliedDiscounts = 2
             };
-            var paidPeach = new CheckoutItem
+            var paidPeach = new CheckoutItem(peach, discountPeach)
             {
-                Amount = 4, Discount = discountPeach, Item = peach, Price = 240,
+                Amount = 4, Price = 240,
                 AppliedDiscounts = 0
             };
 
@@ -145,19 +145,19 @@ namespace TestSupermarketCheckout
             checkout.DiscountCollection = invalidDiscountCollection;
             var checkoutBill = checkout.PayItems();
 
-            var paidApple = new CheckoutItem
+            var paidApple = new CheckoutItem(apple, SupermarketCheckout.Checkout.NoDiscount)
             {
-                Amount = 2, Discount = SupermarketCheckout.Checkout.NoDiscount, Item = apple, Price = 60,
+                Amount = 2, Price = 60,
                 AppliedDiscounts = 0
             };
-            var paidBanana = new CheckoutItem
+            var paidBanana = new CheckoutItem(banana, SupermarketCheckout.Checkout.NoDiscount)
             {
-                Amount = 7, Discount = SupermarketCheckout.Checkout.NoDiscount, Item = banana, Price = 350,
+                Amount = 7, Price = 350,
                 AppliedDiscounts = 0
             };
-            var paidPeach = new CheckoutItem
+            var paidPeach = new CheckoutItem(peach, SupermarketCheckout.Checkout.NoDiscount)
             {
-                Amount = 4, Discount = SupermarketCheckout.Checkout.NoDiscount, Item = peach, Price = 240,
+                Amount = 4, Price = 240,
                 AppliedDiscounts = 0
             };
 
