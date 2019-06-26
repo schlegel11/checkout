@@ -1,15 +1,25 @@
 using System;
 using System.Text;
+using SupermarketCheckout.Utils;
 
 namespace SupermarketCheckout.Entities
 {
     public class CheckoutItem : IEquatable<CheckoutItem>
     {
-        public Item Item { get; set; }
-        public Discount Discount { get; set; }
+        public Item Item { get; }
+        public Discount Discount { get; }
         public int Amount { get; set; }
         public int AppliedDiscounts { get; set; }
         public decimal Price { get; set; }
+
+        public CheckoutItem(Item item, Discount discount)
+        {
+            Checks.CheckArgumentNotNull(item, "Item is null.");
+            Checks.CheckArgumentNotNull(discount, "Discount is null.");
+
+            Item = item;
+            Discount = discount;
+        }
 
         public bool Equals(CheckoutItem other)
         {
@@ -31,8 +41,8 @@ namespace SupermarketCheckout.Entities
         {
             unchecked
             {
-                var hashCode = Item != null ? Item.GetHashCode() : 0;
-                hashCode = (hashCode * 397) ^ (Discount != null ? Discount.GetHashCode() : 0);
+                var hashCode = Item.GetHashCode();
+                hashCode = (hashCode * 397) ^ Discount.GetHashCode();
                 hashCode = (hashCode * 397) ^ Amount;
                 hashCode = (hashCode * 397) ^ AppliedDiscounts;
                 hashCode = (hashCode * 397) ^ Price.GetHashCode();
@@ -53,16 +63,16 @@ namespace SupermarketCheckout.Entities
         public override string ToString()
         {
             var stringBuilder = new StringBuilder();
-            stringBuilder.Append($"Name: {Item?.Name}");
+            stringBuilder.Append($"Name: {Item.Name}");
             stringBuilder.Append(" | ");
             stringBuilder.Append($"Amount: {Amount}");
             stringBuilder.Append(" | ");
-            stringBuilder.Append($"Unit price: {Item?.Price}");
+            stringBuilder.Append($"Unit price: {Item.Price}");
             stringBuilder.Append(" | ");
             stringBuilder.Append($"Price: {Price}");
             stringBuilder.Append(" | ");
             stringBuilder.Append(
-                $"Applied discount: {(AppliedDiscounts == 0 ? "No discounts" : AppliedDiscounts + " X " + $"\"{Discount?.Name}\"")}");
+                $"Applied discount: {(AppliedDiscounts == 0 ? "No discounts" : AppliedDiscounts + " X " + $"\"{Discount.Name}\"")}");
             return stringBuilder.ToString();
         }
     }
